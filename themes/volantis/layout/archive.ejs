@@ -4,6 +4,7 @@
 		<%- partial('_partial/archive') %>
 	<% } else { %>
 	  <article id="arc" class="post article white-box reveal <%- theme.custom_css.body.effect.join(' ') %>">
+	        <%- partial('_widget/post-calendar') %>
 			<% var year = -1, postid = -1; %>
 			<% site.posts.sort('date', -1).each(function(post) { %>
 				<% post.year = date(post.date, 'YYYY'); %>
@@ -13,8 +14,8 @@
 						<h2><%= year %></h2>
 					<% } %>
 						<div class='timenode'>
-								<a class="meta" href="<%= url_for(post.link || post.path) %>">
-									<time><%= date(post.date, 'MM-DD') %></time>
+								<a class="meta" href="<%= url_for(post.link || post.path) %>" onMouseOver="this.children[1].innerText='📖&nbsp;'" onMouseOut="this.children[1].innerText='📘&nbsp;'">
+									<time style="width:45px!important"><%= date(post.date, 'MM-DD') %></time><span>📘&nbsp;</span>
 									<% if(post.title){ %>
 										<%- post.title %>
 									<% } else if (post.date) { %>
@@ -29,6 +30,7 @@
 									<% (post.icons && post.icons||[]).forEach(function(icon){ %>
 										&nbsp;<i class="<%- icon %>" aria-hidden="true"></i>
 									<% }) %>
+									&nbsp;<i class="fas fa-feather green" aria-hidden="true" style="visibility:hidden"></i>
 								</a>
 						</div>
 				<% } %>

@@ -6,9 +6,16 @@
     <% if (theme.cover.title) { %>
       <p class="title"><%- theme.cover.title ? theme.cover.title : config.title %></p>
     <% } %>
+	<% if (theme.cover.colourful_title) { %>
+	  <div class="dylogobox"><%- theme.cover.colourful_title %></div>
+	  <div class="dylogorender" onClick="dyrandomlogofont()"></div>
+	  <img no-lazy class='logo' id="dylogo" src='https://cdn.jsdelivr.net/gh/celestezj/ImageHosting@v0.1/img/20210206220813.jpg' style='display:none'/>
+	<% } %>
     <% if (theme.cover.subtitle) { %>
       <p class="subtitle"><%- theme.cover.subtitle%></p>
-    <% } %>
+    <% } else if (theme.cover.colourful_subtitle) { %>
+	  <%- partial('subtitle') %>
+	<% } %>
   </div>
   <div class='bottom'>
     <div class='menu navigation'>
@@ -31,3 +38,42 @@
     </div>
   </div>
 </div>
+
+<% if (theme.cover.colourful_title) { %>
+<script>
+function dyrandomlogofont(){
+var dybox = document.querySelector('.dylogobox').textContent,
+    dyrs = document.querySelector('.dylogorender'),
+    dyf = [
+      'arial','verdana','monospace',
+      'consolas','impact','helveltica'
+    ],
+    dyc = [
+      '1ABC9C','3498DB','34495E','E67E22',
+      'E74C3C','2ECC71','E74C3C','95A5A6','D35400'
+    ];
+var dyout = '';
+for (var i = 0; i < dybox.length; i++) {
+  // Random array fonts
+  var dyr = dyf[Math.floor(Math.random() * dyf.length)],
+      // Random array colors
+      dysh = dyc[Math.floor(Math.random() * dyc.length)],
+      dyst = 'color:#'+dysh+
+      ';font-family: '+dyr+
+      ';text-shadow:0px 1px 0px #'+dysh+',0px 2px 0px #'+dysh+',0px 3px 0px #'+dysh+',0px 4px 0px #'+dysh+', 0px 5px 0px  #'+dysh+',0px 6px 0px #'+dysh+', 0px 7px 0px #'+dysh+',0px 8px 7px #'+dysh;
+  dyout += '<span style="'+dyst+'">'+dybox[i]+'</span>';
+}  
+dyrs.innerHTML = dyout;
+}
+if (IsPC()){
+	dyrandomlogofont();
+} else {
+	var dylogo = document.getElementById("dylogo");
+	var dylogobox = document.getElementsByClassName("dylogobox")[0];
+	var dylogorender = document.getElementsByClassName("dylogorender")[0];
+	dylogobox.style.display="none";
+	dylogorender.style.display="none";
+	dylogo.style.display="";
+}
+</script>
+<% } %>

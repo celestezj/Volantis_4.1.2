@@ -4,41 +4,62 @@ info:
   theme_version: '4.1.2' # This is theme's version.
   theme_docs: https://volantis.js.org/ # This is theme's URL.
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
-  cdn:
-    js:
-    css:
+  cdn: #要取消或启用cdn，在./_config.yml中配置use_cdn参数，开发时请将use_cdn置为false
+    js: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/data/app/app.js
+    css: https://cdn.jsdelivr.net/gh/celestezj/celestezj.github.io@v0.5/css/style.css
 ########################################################################
 
 ############################### Navigation Bar ############################### > start
 navbar:
   visiable: auto # always, auto
   logo: # choose [img] or [icon + title]
-    img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+    img:
     icon:
-    title:
+    title: <span style="font-family:Arial,"Times New Roman",Serif;"><font color="#4285f4">M</font><font color="#ea4335">u</font><font color="#fbbc05">g</font><font color="#4285f4">g</font><font color="#34a853">l</font><font color="#ea4335">e</font><font color="#aaaaaa">dy</font><font color="#9f0099">'s</font><font color="#4ed8ff"> Blog</font></span>
   menu:
-    - name: 博客
-      icon: fas fa-rss
-      url: /
-    - name: 分类
-      icon: fas fa-folder-open
-      url: categories/
-    - name: 标签
-      icon: fas fa-tags
-      url: tags/
-    - name: 归档
-      icon: fas fa-archive
-      url: archives/
-    - name: 友链
-      icon: fas fa-link
-      url: friends/
-    - name: 关于
-      icon: fas fa-info-circle
-      url: about/
+    - name: 🔎 找文章
+      #icon: fas fa-book
+      rows:
+        - name: <span style="display:flex"><span class="dyiconnavbar">📚</span><span>&nbsp;归档</span></span>
+          #icon: fas fa-archive
+          url: archives/
+        - name: <span style="display:flex"><span class="dyiconnavbar">📦</span><span>&nbsp;分类</span></span>
+          #icon: fas fa-folder-open
+          url: categories/
+        - name: <span style="display:flex"><span class="dyiconnavbar">🔖</span><span>&nbsp;标签</span></span>
+          #icon: fas fa-tags
+          url: tags/
+    - name: 📑 页面
+      #icon: fas fa-ellipsis-v
+      rows:
+        - name: <span style="display:flex"><span class="dyiconnavbar">📢</span><span>&nbsp;公示</span></span>
+          #icon: fas fa-bullhorn
+          url: /notes/
+        - name: <span style="display:flex"><span class="dyiconnavbar">🤖</span><span>&nbsp;关于</span></span>
+          #icon: fas fa-info-circle
+          url: /about/
+        #- name: hr
+        #- name: 背景音乐
+        #  icon: fas fa-compact-disc
+        #- name: 暗黑模式 # 可自定义，但是要相应修改volantis/layout/_partial/scripts/darkmode.ejs
+        #  icon: fas fa-moon # 可自定义，同上
+        #  toggle: darkmode
+    - name: 更多
+      icon: fas fa-ellipsis-v
+      rows:
+        - name: <span style="display:flex"><span class="dyiconnavbar">🌸</span><span>&nbsp;本站源码</span></span>
+          url: https://github.com/celestezj/celestezj.github.io/tree/env_volantis_4.1.2
+          target: _blank
+        - name: hr
+        - name: <span style="display:flex"><span class="dyiconnavbar">🕹️</span><span>&nbsp;小游戏</span></span>
+          url: /games/
+        #- name: <span style="display:flex"><span class="dyiconnavbar">🔨</span><span>&nbsp;工具包</span></span>
+        #  url: /
+        #  target: _blank
   search: Search...   # Search bar placeholder
 ############################### Navigation Bar ############################### > end
 
-
+use_new_tag_cloud: true
 ############################### Cover ############################### > start
 cover:
   height_scheme: full # full, half
@@ -47,36 +68,42 @@ cover:
     home: true
     archive: true
     others: false # can be written in front-matter 'cover: true'
-  background: https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg
-  logo: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-Cover@3x.png
-  title: 'Volantis'
-  subtitle: ''
+  background: https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg
+  logo: #https://cdn.jsdelivr.net/gh/celestezj/ImageHosting@v0.1/img/20210206220813.jpg #logo、title和colourful_title虽然并不冲突，但是一般显示一个，否则会干扰布局。需要注意的是，此处我分别为title和subtitle增添了彩色版本，但是两者都是写在layout/_cover/dock.ejs中的，因此如果你选择其他如featured、focus、search等，它们是不配备彩色版本的，因为我个人比较喜欢dock，因此其他就不写了。colourful_title在手机端有一些bug，由于colourful_title尺寸比较大，导致在手机端会换行显示（当然title太长也会如此），于是colourful_title的高度就会成倍，其下方的部件元素就会和colourful_title重叠在一起，解决的办法就是判断当为手机端时，不使用colourful_title，也不建议使用普通的title，所以我使用logo图片，且图片链接是写死的，具体在dock.ejs中修改
+  title: #Muggledy's Blog
+  colourful_title: Muggledy's Blog
+  subtitle: '' #subtitle和colourful_subtitle至多只会显示一个，且subtitle具有高优先级
+  colourful_subtitle:
+    #- 山有木兮木有枝，心悦君兮君不知。
+    #- 人生若只如初见，何事秋风悲画扇。
+    #- 十年生死两茫茫，不思量，自难忘。
+    #- 曾经沧海难为水，除却巫山不是云。
+    #- 洛中何郁郁，冠带自相索。
+    #- 只愿君心似我心，定不负相思意。
+    #- 愿得一心人，白头不相离。
+    #- 入我相思门，知我相思苦。
   search: A Wonderful Theme for Hexo # search bar placeholder
   features:
-    - name: 文档
+    - name: 首页
+      icon: #
+      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f3e0.svg
+      url: /
+    - name: 归档
       icon: #
       img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg
-      url: /v4/getting-started/
-    - name: 帮助
-      icon: #
-      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg
-      url: faqs/
-    - name: 示例
-      icon: #
-      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg
-      url: /examples/
-    - name: 社区
-      icon: #
-      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f389.svg
-      url: /contributors/
-    - name: 博客
-      icon: #
-      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg
       url: /archives/
-    - name: 源码
+    - name: 关于
       icon: #
-      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg
-      url: https://github.com/volantis-x/hexo-theme-volantis/
+      img: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210212025502.svg
+      url: /about/
+    #- name: 留言
+    #  icon: #
+    #  img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4ac.svg
+    #  url: /
+    - name: 音乐
+      icon: #
+      img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f3bc.svg
+      url: https://musicforprogramming.net/
 ############################### Cover ############################### > end
 
 pages:
@@ -99,14 +126,14 @@ article:
     # show split line or not
     line_style: solid # hidden, solid, dashed, dotted
     # show author
-    author: false # true, false
+    author: true # true, false
     # show readmore button
     readmore: auto # auto, always
   # 文章详情页面的文章卡片本体布局方案
   body:
     # 文章顶部信息
     # 从 meta_library 中取
-    top_meta: [author, category, date, counter]
+    top_meta: [author, category, date, counter, wordcount]
     # ----------------
     # 文章页脚组件
     footer_widget:
@@ -124,7 +151,7 @@ article:
       # 相关文章，需要安装插件 (for layout: post)
       # npm i hexo-related-popular-posts
       related_posts:
-        enable: false
+        enable: true
         title: 相关文章
         icon: fas fa-bookmark
         max_count: 5
@@ -134,9 +161,9 @@ article:
       # 版权声明组件 (for layout: post)
       copyright:
         enable: true
-        permalink: '本文永久链接是：'
+        permalink: '🔗本文永久链接是：'
         content:
-          - '博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
+          - '📃博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议'
           - permalink
       # ----------------
       # 打赏组件 (for layout: post)
@@ -152,9 +179,9 @@ article:
     meta_library:
       # 默认文章作者（可在 front-matter 中覆盖）
       author:
-        avatar:
-        name: 请设置文章作者
-        url: /
+        avatar: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting@v0.1/img/20210207093620.ico
+        name: muggledy
+        url: https://muggledy.github.io
       # 文章创建日期
       date:
         icon: fas fa-calendar-alt
@@ -189,10 +216,10 @@ article:
           img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png
         - id: qzone
           img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png
-        - id: weibo
-          img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png
-        - id: # qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
-          img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png
+        #- id: weibo
+        #  img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png
+        - id: qrcode # 当id为qrcode时需要安装插件  npm i hexo-helper-qrcode
+          img: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/wechat.png
         - id: # telegram
           img: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/telegram.png
 ############################### Article Layout ############################### > end
@@ -206,11 +233,11 @@ comments:
   # Valine
   # https://valine.js.org/
   valine:
-    appId: # your appId
-    appKey: # your appKey
-    # js: https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
+    appId: zeKuaSsLBAy1lPz2ukCrQD4P-gzGzoHsz # your appId
+    appKey: RYNgh2e7vNiU5DbG1hImw4A2 # your appKey
+    js: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/data/valine/Valine.min.js # https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js
     path: # 全局评论地址
-    placeholder: 快来评论吧~  # 评论占位提示
+    placeholder: 快来评论吧(输入QQ号自动补全邮箱哦)~  # 评论占位提示
     meta: nick,mail,link # valine comment header info
     requiredFields: ['nick','mail']
     enableQQ: true # Unstable avatar link
@@ -221,6 +248,13 @@ comments:
     highlight: true
     visitor: true
     mathJax: false
+    tagMeta: ["博主","小伙伴","访客"]
+    master: # md5加密后的博主邮箱（在线加密：https://md5jiami.bmcx.com/）
+      - 5f452633ebd48518f8778c240d946335
+    friends: # md5加密后的小伙伴邮箱
+      - a483c79213701a5644bec62de88f974d
+      - 34c64a0cb78287b2ae889cda5d9d2a91
+      - 574fbd33aa74a09d671f4608af20fd2b
   # MiniValine
   # https://github.com/MiniValine/MiniValine
   minivaline:
@@ -310,7 +344,7 @@ comments:
 ############################### Sidebar ############################### > start
 sidebar:
   # 主页、分类、归档等独立页面
-  for_page: [blogger, category, tagcloud, qrcode]
+  for_page: [blogger, category, tagcloud, qrcode, notes, newcomment]
   # layout: docs/post 这类文章页面
   for_post: [toc]
   # 侧边栏组件库
@@ -320,21 +354,21 @@ sidebar:
     blogger:
       class: blogger
       display: [desktop, mobile] # [desktop, mobile]
-      avatar: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png
+      avatar: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting@v0.1/img/20210202152223.jpg
       shape: rectangle # circle, rectangle
-      url: /about/
+      url: https://celestezj.github.io/album/
       title:
       subtitle:
-      jinrishici: true # Poetry Today. You can set a string, and it will be displayed when loading fails.
+      jinrishici: 孤筏重洋 # Poetry Today. You can set a string, and it will be displayed when loading fails.
       social:
-        - icon: fas fa-rss
-          url: /atom.xml
-        - icon: fas fa-envelope
-          url: mailto:me@xxx.com
         - icon: fab fa-github
-          url: https://github.com/volantis-x/
-        - icon: fas fa-headphones-alt
-          url: /
+          url: https://github.com/muggledy/
+        - icon: fas fa-envelope
+          url: mailto:zgjsycfndy2015@163.com
+        - icon: fab fa-weixin
+          url: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210209044239.jpg
+        - icon: fas fa-rss
+          url: https://celestezj.github.io/atom.xml
     # ---------------------------------------
     # toc widget (valid only in articles)
     toc:
@@ -354,16 +388,16 @@ sidebar:
       header:
         icon: fas fa-folder-open
         title: 文章分类
-        url: /blog/categories/
+        url: /categories/
     # ---------------------------------------
     # tagcloud widget
     tagcloud:
       class: tagcloud
-      display: [desktop, mobile] # [desktop, mobile]
+      display: [desktop] # [desktop, mobile]
       header:
         icon: fas fa-tags
         title: 热门标签
-        url: /blog/tags/
+        url: /tags/
       min_font: 14
       max_font: 24
       color: true
@@ -380,6 +414,41 @@ sidebar:
         - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
         - https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png
     # ---------------------------------------
+    # 网站公式栏
+    notes:
+      class: text
+      display: [desktop] # [desktop, mobile]
+      header:
+        icon: fas fa-bullhorn
+        title: 公示
+        url: /notes/
+      content:
+        - <center><img src="https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210313184311.gif" height="150px"/></center>
+    # ---------------------------------------
+    # 最新评论
+    newcomment:
+      class: text
+      display: [desktop] # [desktop, mobile]
+      header:
+        icon: far fa-comments
+        title: 最新评论
+        #url: 
+      content:
+         - '<div id="hot-comments"></div>'
+    # ---------------------------------------
+    article-hexo-theme:
+      class: list
+      display: [desktop, mobile] # [desktop, mobile]
+      header:
+        icon: fa fa-book
+        title: 文档导航
+        # url: /wiki/
+      rows:
+        - name: Hexo博客简易配置
+          url: /2021/02/06/%E9%85%8D%E7%BD%AE%E5%8D%9A%E5%AE%A2/
+        - name: 官方Volantis主题配置文档
+          url: /2017/07/05/Volantis%E5%AE%98%E6%96%B9%E9%85%8D%E7%BD%AE%E6%96%87%E6%A1%A3/
+    # ---------------------------------------
     # webinfo widget
     webinfo:
       class: webinfo
@@ -394,7 +463,7 @@ sidebar:
           unit: '篇'
         runtime:
           enable: true
-          data: '2020/01/01'    # 填写建站日期
+          data: '2021/02/02'    # 填写建站日期
           text: '已运行时间：'
           unit: '天'
         wordcount:
@@ -439,14 +508,22 @@ tag_plugins:
 
 ############################### Site Footer ############################### > start
 site_footer:
-  # layout of footer: [aplayer, social, license, info, copyright]
-  layout: [aplayer, social, license, analytics, info, copyright]
+  # layout of footer: [aplayer, social, license, analytics, info, copyright]
+  layout: [social, copyright, yunxingtianshu, analytics, hexotheme]
   social:
     - icon: #fas fa-rss
       url:
     # or
-    - img:
-      url:
+    - img: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210312213956.png
+      url: https://github.com/muggledy/
+    - img: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210312214251.png
+      url: mailto:zgjsycfndy2015@163.com
+    - img: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210313132419.svg
+      url: http://wpa.qq.com/msgrd?v=3&uin=3101266674&site=qq&menu=yes
+    #- img: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210312214343.png
+    #  url: https://celestezj.github.io/atom.xml
+    - img: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210312214428.svg
+      url: https://web.archive.org/web/*/http://muggledy.top
     # or
     - avatar:
       url:
@@ -454,10 +531,10 @@ site_footer:
   source: https://github.com/volantis-x/volantis-docs/
   # analytics using leancloud
   analytics: >
-    <span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span>
-    <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
+    <span id="lc-sv">总访问量 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次,</span>
+    <span id="lc-uv">访客数 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span>
   # site copyright
-  copyright: '[Copyright © 2017-2020 XXX](/)'
+  copyright: 'Copyright © 2021 muggledy'
   # You can add your own property here. (Support markdown, for example: br: '<br>')
   br: '<br>'
 ############################### Site Footer ############################### > end
@@ -483,7 +560,7 @@ plugins:
   # 图片懒加载
   # https://www.npmjs.com/package/vanilla-lazyload
   lazyload:
-    enable: true
+    enable: true #启用懒加载，一些img标签可能显示不出来，注意添加no-lazy，譬如最新评论头像案例
     js: https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js
     onlypost: false
     loadingImg: # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@3/img/placeholder/c617bfd2497fcea598e621413e315c368f8d8e.svg
@@ -509,14 +586,14 @@ plugins:
 
   # Codeblock Copy Button
   clipboard:
-    enable: #true
+    enable: true
     js: https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js
 
   ######## Plugins for SEO:
 
   # npm i hexo-wordcount
   wordcount:
-    enable: #true
+    enable: true
 
   ######## Plugins for ...
   # Button Ripple Effect
@@ -537,53 +614,58 @@ plugins:
 
   # Slide Background
   backstretch:
-    enable: #true
+    enable: true
     js: https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js
     position: cover       # cover: sticky on the cover.   fixed: Fixed as background for the site.
     shuffle: true         # shuffle playlist
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/051.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg
-      - https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg
+      - https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210217120300.jpg
+      - https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210317101229.jpg
+      #- https://cdn.jsdelivr.net/gh/celestezj/ImageHosting@v0.1/img/20210202144753.png #√
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/001.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/002.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/003.jpg #√
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/004.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/005.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/006.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/012.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/016.jpg #√
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/019.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/025.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/034.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/035.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/038.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/039.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/042.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/046.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/050.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/052.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/054.jpg
+      #- https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/056.jpg
+      #- https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210211171827.jpg
+      #- https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210211172259.jpg
 
   # APlayer is only available in mainland China.
   # APlayer config: https://github.com/metowolf/MetingJS
   aplayer:
-    enable: #true
+    enable: true
     js:
       - https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js
       - https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js
     # Required
     server: netease   # netease, tencent, kugou, xiami, baidu
     type: playlist    # song, playlist, album, search, artist
-    id: 3175833810    # song id / playlist id / album id / search keyword
+    id: 6609974608    # song id / playlist id / album id / search keyword
     # Optional
-    fixed: false      # enable fixed mode
+    fixed: true      # enable fixed mode
     theme: '#1BCDFC'  # main color
     autoplay: false   # audio autoplay
-    order: list       # player play order, values: 'list', 'random'
+    order: random       # player play order, values: 'list', 'random'
     loop: all         # player loop play, values: 'all', 'one', 'none'
-    volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
+    volume: 0.4       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
     list_max_height: 320px # list max height
     list_folded: true
   pjax:
@@ -630,7 +712,7 @@ plugins:
   #   icon: fas fa-moon # 可自定义
   #   toggle: darkmode
   darkmodejs:
-    enable: #true
+    enable: true
 
 ############################### Plugins ############################### > end
 
@@ -639,15 +721,19 @@ plugins:
 rightmenu:
   enable: #true
   # hr: 分割线, music: 音乐控制器
-  layout: [home, help, examples, contributors, hr, source_docs, source_theme, hr, print, hr, music]
+  layout: [home, about, help, hr, music]
   # 可选功能项
+  about:
+    name: About
+    icon: fa fa-info
+    url: /about/
   print:
-    name: 打印页面
+    name: Print
     icon: fa fa-print
     onclick: document.execCommand('print')
   # 自定义菜单的格式如下
   help:
-    name: 常见问题
+    name: Questions
     icon: fa fa-question
     url: https://volantis.js.org/faqs/
   examples:
@@ -675,7 +761,7 @@ rightmenu:
 search:
   enable: true
   service: hexo  # hexo, google, algolia, azure, baidu
-  js:
+  js: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/data/search/search.js
   google:
     apiKey:
     engineId:
@@ -746,7 +832,7 @@ color_scheme:
     # 辅助性文字
     meta: '#888'
   # ------------
-  # 暗色主题
+  # 暗色主题 | 主题当前版本暗色配置在手机端存在bug，点击时而无效，因此删除了默认的source/css/_plugins/dark.styl（此处dark键值也就无用），并参照https://www.zyoushuo.cn/post/e8f5.html重新配置
   dark:
     # 网站背景色
     site_bg: '#222'
@@ -789,7 +875,7 @@ color_scheme:
 custom_css:
   toc_smooth: true # TOC 目录平滑滚动效果
   cursor:
-    enable: #true
+    enable: true
     text: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/text.png
     pointer: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/pointer.png
     default: https://cdn.jsdelivr.net/gh/inkss/common@master/cursor/left_ptr.png
@@ -869,8 +955,8 @@ custom_css:
 analytics:
   busuanzi: #https://cdn.jsdelivr.net/gh/volantis-x/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js
   leancloud: # 请使用自己的 id & key 以防止数据丢失
-    app_id: u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI
-    app_key: jfHtEKVE24j0IVCGHbvuFClp
+    app_id: 8Ihq5v1YlRsrBoOAbeQeL4tj-gzGzoHsz
+    app_key: 8IXfoRd6cod5rBwYVTd9Cfmc
     custom_api_server: # 国际版一般不需要写，除非自定义了 API Server
 ############################### Analytics ############################### > end
 

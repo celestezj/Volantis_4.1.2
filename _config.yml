@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Muggledy's Blog
 subtitle: ''
 description: ''
 keywords:
@@ -11,9 +11,10 @@ author: John Doe
 language: en
 timezone: ''
 
+favicon: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting@v0.1/img/20210207091812.png
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://example.com
+url: https://celestezj.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -99,6 +100,29 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: volantis
+
+markdown_it_plus:
+  highlight: true
+  html: true
+  xhtmlOut: true
+  breaks: true
+  langPrefix:
+  linkify: true
+  typographer:
+  quotes: “”‘’
+  plugins:
+    - plugin:
+        name: markdown-it-mark
+        enable: false
+
+import:
+  script:
+    - <script>$('.fa-weixin').html('<img no-lazy class="qrcode" src="https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210209044239.jpg" alt="微信二维码"/>');</script>
+
+use_cdn: true
+
+popularPosts:
+  eyeCatchImageAttributeName: headimg
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

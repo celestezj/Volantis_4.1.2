@@ -1,3 +1,4 @@
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
 <% if (theme.comments.valine.js) { %>
   <%- js(theme.comments.valine.js) %>
 <% } else { %>
@@ -63,11 +64,134 @@
       recordIP: '<%= theme.comments.valine.recordIP %>',
       requiredFields: requiredFields,
       emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps
+      emojiMaps: emojiMaps,
+      master: '[<%= theme.comments.valine.master %>]',
+      friends: '[<%= theme.comments.valine.friends %>]'
     })
   }
 
+  //最新评论
+  function newcomment() {
+ 
+    function queryLeanCloud(k) {
+      let root = this;
+      let len = arguments.length;
+      if (len == 1) {
+        let notExist = new AV.Query("Comment");
+        notExist.doesNotExist('rid');
+        let isEmpty = new AV.Query("Comment");
+        isEmpty.equalTo('rid', '');
+        let q = AV.Query.or(notExist, isEmpty);
+        if (k === '*') q.exists('url');
+        else q.equalTo('url', decodeURI(k));
+        q.addDescending('createdAt');
+        q.addDescending('insertedAt');
+        return q;
+      } else {
+        let ids = JSON.stringify(arguments[1]).replace(/(\[|\])/g, '');
+        let cql = `select * from ${root['config']['clazzName']} where rid in (${ids}) order by -createdAt,-createdAt`;
+        return AV.Query.doCloudQuery(cql)
+      }
+    }
+    var valine = new Valine({
+      el: '#valine_container_ba（因为主题已经有valine的这些参数了，这里随意填都行）',
+      app_id: 'zeKuaSsLBAy1lPz2ukCrQD4P-gzGzoHsz',
+      app_key: 'RYNgh2e7vNiU5DbG1hImw4A2',
+      placeholder: '',
+      serverURLs: ''
+    });
+ 
+    //判断网址
+    function wangzhi(e){
+        http = e.slice(0,4)
+        https = e.slice(0,5)
+        if (http == "http" || https == "https" ){
+             return e
+        } else if (e == "" || e == null || e == undefined){
+          return e
+        } else {
+          e = 'http://'+ e
+          return e
+        }
+    }
+	
+	//获取头像
+    function getAvater(mail){
+        //return 'http://v1.alapi.cn/api/avatar?email='+mail+'&size=100'
+		if (mail.endsWith("qq.com")) {
+		    var qq;
+		    var qqipos;
+			qqipos = mail.indexOf("@");
+			qq=mail.substring(0,qqipos);
+			return 'https://q2.qlogo.cn/headimg_dl?dst_uin=' + mail + ',' + qq + ',&spec=100';
+		} else {
+		    return 'https://gravatar.loli.net/avatar/'+md5(mail)+'?d=robohash&v=1.4.14';
+		}
+    }
+	
+	function timeago(dateTimeStamp) { 
+        var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示 
+        var hour = minute * 60; 
+        var day = hour * 24; 
+        var week = day * 7; 
+        var month = day * 30; 
+        var now = new Date().getTime(); //获取当前时间毫秒 
+        var diffValue = now - dateTimeStamp; //时间差 
+        if (diffValue < 0) { 
+			//console.log(diffValue); //妈的，居然出了负值，-2174是什么鬼
+			diffValue=0;
+            //return;
+        } 
+        var minC = diffValue / minute; //计算时间差的分，时，天，周，月 
+        var hourC = diffValue / hour; 
+        var dayC = diffValue / day; 
+        var weekC = diffValue / week; 
+        var monthC = diffValue / month; 
+        if (monthC >= 1 && monthC <= 3) { 
+            result = " " + parseInt(monthC) + " 月前" 
+        } else if (weekC >= 1 && weekC <= 3) { 
+            result = " " + parseInt(weekC) + " 周前" 
+        } else if (dayC >= 1 && dayC <= 6) { 
+            result = " " + parseInt(dayC) + " 天前" 
+        } else if (hourC >= 1 && hourC <= 23) { 
+            result = " " + parseInt(hourC) + " 小时前" 
+        } else if (minC >= 1 && minC <= 59) { 
+            result = " " + parseInt(minC) + " 分钟前" 
+        } else if (diffValue >= 0 && diffValue <= minute) { 
+            result = "刚刚" 
+        } else { 
+            var datetime = new Date(); 
+            datetime.setTime(dateTimeStamp); 
+            var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1; 
+            var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate(); 
+            result = Nmonth + "-" + Ndate 
+        } 
+        return result; 
+    }
+	
+    //查询评论（此处设置为最多显示7条新评论）
+    valine.Q('*').limit(7).find().then(function (comments) {
+      var hotComments = $("#hot-comments");
+      for (var i = 0; i < comments.length; i++) {
+        //if (i === 0) {
+        //  console.log(comments[0]);
+        //}
+        var nick = comments[i]._serverData.nick;
+        var content = comments[i]._serverData.comment;
+        var newcontent = content.substring(0, 50).replace(/<[^>]+>/g,"");
+        var url = comments[i]._serverData.url;
+        var link = wangzhi(comments[i]._serverData.link);
+        var updatedAt = timeago(comments[i].updatedAt);
+        var commentId = '#' + comments[i].id;
+        var mail = getAvater(comments[i]._serverData.mail);
+		var dyonerror = 'οnerrοr="' + "this.οnerrοr='';this.src='https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210315095508.jpg'" + '"'
+        hotComments.append('<div class="card-comment-item"><img no-lazy '+ dyonerror +' style="width: 40px;height:40px" class="circle mx1 listavatar" src="' + mail + '"><div class="message_c"><div class="item-header-text"><a href="'+ link +'" target="_blank" rel="nofollow noopener noreferrer" class="newcomment" >' + nick + '</a><span class="comment_date">' + updatedAt + '</span></div><div class="item-text"><a href="' + url + commentId +'"  rel="nofollow" style="color:#717171" class="comments-detail" >' + newcontent + '</a></div></div></div>');
+      }
+    });
+  }; //comes from https://www.heson10.com/posts/7207.html
+
   $(function () {
     pjax_valine();
+    newcomment();
   });
 </script>

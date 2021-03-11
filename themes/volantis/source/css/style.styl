@@ -6,4 +6,158 @@
 @import '_highlight'
 @import '_plugins/index'
 @import '_layout/*'
+@import '_custom/*'
 
+//最新评论，直接F12爬的阳光派plus的css，可能还存在不完美的地方，需要改进
+.card-comment-item{
+    margin: 10px 0 5px 0;
+    padding-bottom: 5px;
+    position: relative;
+    align-items: center;
+    display: flex;
+	//border-bottom: 1px solid #e2dada;
+}
+.item-header-text{
+    color:#9a9a9a;
+    position: relative;
+}
+.item-text {
+    padding: 0;
+}
+a.newcomment{
+    font-weight:bold;
+    color:#444;
+}
+a.newcomment:hover{
+    color:#36ac91!important; 
+}
+a.comments-detail:hover{
+    color:#36ac91!important;
+}
+.card-comment-item .listavatar {
+    border-radius: 50%;
+    margin: 0 5px;
+    //box-shadow: 0 0.125rem 1.0625rem 0 rgba(0,0,0,.08);
+}
+.circle {
+    margin: 0;
+}
+.card-comment-item .message_c {
+    width: 100%;
+}
+span.comment_date {
+    position: absolute;
+    right: 4%;
+}
+a.newcomment {
+    color: rgba(24,32,38,0.722) !important;
+}
+
+//微信二维码
+.fa-weixin {
+  position: relative;
+}
+.fa-weixin img.qrcode {
+  position: absolute;
+  z-index: 9;
+  top: -135px;
+  right: -43px;
+  width: 7.5rem;
+  max-width: none;
+  height: 7.5rem;
+  transform: scale(0);
+  transform-origin: bottom;
+  opacity: 0;
+  //border: .1rem solid #0085ba;
+  border-radius: .25rem;
+  -webkit-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+.fa-weixin:hover img.qrcode {
+  transform: scale(1);
+  opacity: 1;
+}
+
+//自定义按钮样式
+.dybutton {
+  position: relative;
+  display: inline-block;
+  background: #D0EEFF;
+  border: 1px solid #99D3F5;
+  border-radius: 4px;
+  padding: 4px 12px;
+  overflow: hidden;
+  color: #1E88C7;
+  text-decoration: none;
+  text-indent: 0;
+  line-height: 20px;
+}
+.dybutton input {
+  position: absolute;
+  font-size: 100px;
+  right: 0;
+  top: 0;
+  opacity: 0;
+}
+.dybutton:hover {
+  background: #AADFFD;
+  border-color: #78C3F3;
+  color: #004974;
+  text-decoration: none;
+}
+
+//封面彩色标题
+.dylogobox {
+  display: none;
+}
+.dylogorender {
+  width: 100%;
+  display: block;
+  margin: 10px auto;
+}
+.dylogorender span {
+  font-size: 62px;
+  font-weight: 300;
+}
+
+//霓虹灯文字特效
+#dysvgBox{
+	width:100%;
+	margin:8px auto;
+}
+#dysvgBox .text{
+	font-size: 50px;
+	font-weight: bold;
+	text-transform: uppercase;
+	fill: none;
+	stroke-width: 2px;
+	stroke-dasharray: 90 310;
+	animation: stroke 6s infinite linear;
+}
+#dysvgBox .text-1{
+	stroke: #3498db;
+	text-shadow: 0 0 5px #3498db;
+	animation-delay: -1.5s;
+}
+#dysvgBox .text-2{
+	stroke: #f39c12;
+	text-shadow: 0 0 5px #f39c12;
+	animation-delay: -3s;
+}
+#dysvgBox .text-3{
+	stroke: #e74c3c;
+	text-shadow: 0 0 5px #e74c3c;
+	animation-delay: -4.5s;
+}
+#dysvgBox .text-4{
+	stroke: #9b59b6;
+	text-shadow: 0 0 5px #9b59b6;
+	animation-delay: -6s;
+}
+
+@keyframes stroke {
+	100% {
+		stroke-dashoffset: -400;
+	}
+}

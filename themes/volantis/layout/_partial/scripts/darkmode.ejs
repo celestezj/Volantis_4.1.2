@@ -85,6 +85,17 @@ function bindToggleButton() {
 	var btn=$("#wrapper .toggle-mode-btn");
     btn.on('click',(e) => {
       const mode = toggleCustomDarkMode();
+	  /*if(mode=="light"){
+          $(".menuitem.flat-box.header.toggle-mode-btn").eq(0).children().eq(0).attr('class','fas fa-moon fa-fw');
+          $(".menuitem.flat-box.header.toggle-mode-btn").eq(0).contents().last()[0].textContent='暗黑模式';
+          $(".menuitem.flat-box.header.toggle-mode-btn").eq(1).children().eq(0).attr('class','fas fa-moon fa-fw');
+          $(".menuitem.flat-box.header.toggle-mode-btn").eq(1).contents().last()[0].textContent='暗黑模式';
+	  }else if(mode=="dark"){
+          $(".menuitem.flat-box.header.toggle-mode-btn").eq(0).children().eq(0).attr('class','fas fa-sun fa-fw');
+          $(".menuitem.flat-box.header.toggle-mode-btn").eq(0).contents().last()[0].textContent='白天模式';
+          $(".menuitem.flat-box.header.toggle-mode-btn").eq(1).children().eq(0).attr('class','fas fa-sun fa-fw');
+          $(".menuitem.flat-box.header.toggle-mode-btn").eq(1).contents().last()[0].textContent='白天模式';
+	  };*/
       applyCustomDarkModeSettings(mode);
     });
 }

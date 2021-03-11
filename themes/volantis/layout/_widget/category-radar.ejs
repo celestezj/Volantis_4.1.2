@@ -1,0 +1,71 @@
+<style type="text/css">
+    #category-radar {
+        height: 360px;
+    }
+</style>
+
+<div class="container" data-aos="fade-up">
+    <div class="card">
+        <div id="category-radar" class="card-content"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //window.onload=function(){
+	//setTimeout(function(){
+	var radarChart = echarts.init(document.getElementById('category-radar'));
+	window.addEventListener("resize", () => { radarChart.resize(); });
+
+    <%
+        var categories = site.categories;
+
+        // Find the maximum and average values of the post categories.
+        var radarValueArr = [];
+        categories.some(function(category) {
+            radarValueArr.push(category.length);
+        });
+
+        var max = Math.max.apply(null, radarValueArr) + Math.min.apply(null, radarValueArr);
+
+        // Calculate the data needed for the radar chart.
+        var indicatorArr = [];
+        categories.map(function(category) {
+            indicatorArr.push({'name': category.name, 'max': max});
+        });
+
+        var indicatorData = JSON.stringify(indicatorArr);
+        var radarValueData = JSON.stringify(radarValueArr);
+    %>
+
+    var option = {
+        animation: false,
+        tooltip: {},
+        radar: {
+            name: {
+                textStyle: {
+                    color: '#3C4858'
+                }
+            },
+            indicator: <%- indicatorData %>,
+            nameGap: 5,
+            center: ['50%','55%'],
+            radius: '66%'
+        },
+        series: [{
+            type: 'radar',
+            color: ['#3ecf8e'],
+            itemStyle: {normal: {areaStyle: {type: 'default'}}},
+            data : [
+                {
+                    value : <%- radarValueData %>,
+                    name : '<%= __("文章分类雷达图") %>'
+                }
+            ]
+        }]
+    };
+
+    radarChart.setOption(option);
+	//}
+	//},200);
+	setTimeout(function(){radarChart.resize();},200); //https://blog.csdn.net/weixin_37817251/article/details/90046795
+</script>

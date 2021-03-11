@@ -18,6 +18,9 @@
               <% }) %>
             <% } %>
           </div>
+		  <% if (site.categories.length>1) { %>
+               <%- partial('_widget/category-radar') %>
+          <% } %>
           <br>
           <%- page.content %>
         </article>
