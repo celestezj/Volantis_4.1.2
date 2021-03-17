@@ -6,7 +6,7 @@ info:
   theme_repo: https://github.com/volantis-x/hexo-theme-volantis
   cdn: #要取消或启用cdn，在./_config.yml中配置use_cdn参数，开发时请将use_cdn置为false
     js: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/data/app/app.js
-    css: https://cdn.jsdelivr.net/gh/celestezj/celestezj.github.io@v0.5/css/style.css
+    css: https://cdn.jsdelivr.net/gh/celestezj/celestezj.github.io@v0.7/css/style.css
 ########################################################################
 
 ############################### Navigation Bar ############################### > start
@@ -32,6 +32,8 @@ navbar:
     - name: 📑 页面
       #icon: fas fa-ellipsis-v
       rows:
+        - name: <span style="display:flex"><span class="dyiconnavbar">🔗</span><span>&nbsp;友链</span></span>
+          url: /friends/
         - name: <span style="display:flex"><span class="dyiconnavbar">📢</span><span>&nbsp;公示</span></span>
           #icon: fas fa-bullhorn
           url: /notes/
@@ -48,9 +50,12 @@ navbar:
       icon: fas fa-ellipsis-v
       rows:
         - name: <span style="display:flex"><span class="dyiconnavbar">🌸</span><span>&nbsp;本站源码</span></span>
-          url: https://github.com/celestezj/celestezj.github.io/tree/env_volantis_4.1.2
+          url: https://github.com/celestezj/celestezj.github.io/tree/master
           target: _blank
         - name: hr
+        - name: <span style="display:flex"><span class="dyiconnavbar">📷</span><span>&nbsp;相册</span></span>
+          url: /gallery/
+        #- name: hr
         - name: <span style="display:flex"><span class="dyiconnavbar">🕹️</span><span>&nbsp;小游戏</span></span>
           url: /games/
         #- name: <span style="display:flex"><span class="dyiconnavbar">🔨</span><span>&nbsp;工具包</span></span>
@@ -62,7 +67,7 @@ navbar:
 use_new_tag_cloud: true
 ############################### Cover ############################### > start
 cover:
-  height_scheme: full # full, half
+  height_scheme: half # full, half #如果采用dock，此选项就不用设置了，已被其他覆盖，具体见dock.ejs
   layout_scheme: dock # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
     home: true
@@ -109,7 +114,7 @@ cover:
 pages:
   # 友链页面配置
   friends:
-    layout_scheme: traditional # simple: 简单布局, traditional: 传统布局,  sites: 网站卡片布局
+    layout_scheme: sites # simple: 简单布局, traditional: 传统布局,  sites: 网站卡片布局
 
 ############################### Article Layout ############################### > start
 # 文章布局
@@ -702,7 +707,7 @@ plugins:
   # 例如：
   # {% issues sites | api=https://api.github.com/repos/volantis-x/examples/issues?sort=updated&state=open&page=1&per_page=100 | group=version:latest,v6,v5,v4,v3,v2,v1,v0 %}
   issues:
-    enable: #true
+    enable: true
     js:
 
   # 暗黑模式 darkmode

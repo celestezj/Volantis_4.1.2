@@ -23,6 +23,7 @@ bottom_meta: false
 <!-- https://archive.org/details/tsddemo_zip https://archive.org/details/STATION_ZIP-->
 <iframe id="dukenukemid" name="dukenukemname" src="https://archive.org/embed/DukeNukemIi" width="100%" height="550px" οnlοad="this.height=if_content.document.body.scrollHeight" frameborder="0"></iframe>
 
+<!-- 自定义按钮（纯CSS）：你可以在任意页面使用该按钮样式（说实话有点丑了），只要赋值dybutton类名即可 -->
 <input type="button" value="退出游戏点我" onclick="window.open('https://archive.org/embed/DukeNukemIi','dukenukemname','')" class="dybutton">
 
 <!-- endtab -->

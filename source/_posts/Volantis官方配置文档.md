@@ -17,3 +17,8 @@ headimg: https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/00
 {% link 示例博客, https://volantis.js.org/examples/, https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets@master/logo/256/safari.png %}
 所有的 Volantis 用户都可以按照格式自行创建 <a href="https://github.com/volantis-x/examples/issues/">Issue</a> 来将自己的博客添加到官网的示例博客页面中。
 <!--more-->
+
+<div class="dykatongwrapper" style="text-align:center;height:60px;">
+  <div class="dykatongcontent" style="font-size:2.5rem">祝您阅读愉快</div>
+</div>
+<script>dykatongrender();</script>

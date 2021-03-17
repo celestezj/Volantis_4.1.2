@@ -1,0 +1,9 @@
+- group: 小伙伴
+  description:
+  items:
+    - title: 阳光派Plus’Blog
+      avatar: https://cdn.jsdelivr.net/gh/zyoushuo/Blog/images/photo.jpg
+      url: https://www.zyoushuo.cn/
+      screenshot: https://cdn.jsdelivr.net/gh/zyoushuo/Blog/images/BG_10.jpg
+      keywords: # 关键词
+      description: 聪明的妖怪已经录下了唐僧的紧箍咒
