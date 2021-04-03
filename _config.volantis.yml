@@ -37,9 +37,9 @@ navbar:
         - name: <span style="display:flex"><span class="dyiconnavbar">📢</span><span>&nbsp;公示</span></span>
           #icon: fas fa-bullhorn
           url: /notes/
-        - name: <span style="display:flex"><span class="dyiconnavbar">🤖</span><span>&nbsp;关于</span></span>
-          #icon: fas fa-info-circle
-          url: /about/
+        #- name: <span style="display:flex"><span class="dyiconnavbar">🤖</span><span>&nbsp;关于</span></span>
+        #  #icon: fas fa-info-circle
+        #  url: /about/
         #- name: hr
         #- name: 背景音乐
         #  icon: fas fa-compact-disc
@@ -50,7 +50,7 @@ navbar:
       icon: fas fa-ellipsis-v
       rows:
         - name: <span style="display:flex"><span class="dyiconnavbar">🌸</span><span>&nbsp;本站源码</span></span>
-          url: https://github.com/celestezj/celestezj.github.io/tree/master
+          url: https://github.com/celestezj/Volantis_4.1.2
           target: _blank
         - name: hr
         - name: <span style="display:flex"><span class="dyiconnavbar">📷</span><span>&nbsp;相册</span></span>
@@ -97,14 +97,14 @@ cover:
       icon: #
       img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg
       url: /archives/
-    - name: 关于
-      icon: #
-      img: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210212025502.svg
-      url: /about/
-    #- name: 留言
+    #- name: 关于
     #  icon: #
-    #  img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4ac.svg
-    #  url: /
+    #  img: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210212025502.svg
+    #  url: /about/
+    - name: 友链
+      icon: #
+      img: https://cdn.jsdelivr.net/gh/celestezj/ImageHosting/img/20210404165545.png
+      url: /friends/
     - name: 音乐
       icon: #
       img: https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f3bc.svg
